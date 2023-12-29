@@ -14,7 +14,7 @@ Before running the app, make sure you have the following installed:
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) (Node Package Manager)
 - [React Native CLI](https://reactnative.dev/docs/environment-setup)
-- [Firebase] Used for backend services, including authentication and data storage.
+- [Firebase](https://console.firebase.google.com/) Used for backend services, including authentication and data storage.
 
 
 ## Getting Started
