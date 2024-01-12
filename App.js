@@ -5,8 +5,9 @@ import { StatusBar } from "expo-status-bar";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
-import AuthContentProvider from "./store/auth-context";
+import AuthContextProvider, { AuthContext } from "./store/auth-context";
 import { Colors } from "./constants/styles";
+import { useContext } from "react";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,12 +41,11 @@ function AuthenticatedStack() {
 }
 
 function Navigation() {
+  const authCtx = useContext(AuthContext);
   return (
-    <AuthContentProvider>
-      <NavigationContainer>
-        <AuthStack />
-      </NavigationContainer>
-    </AuthContentProvider>
+    <NavigationContainer>
+      {authCtx.isLoggedIn ? <AuthenticatedStack /> : <AuthStack />}
+    </NavigationContainer>
   );
 }
 
@@ -53,8 +53,9 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-
-      <Navigation />
+      <AuthContextProvider>
+        <Navigation />
+      </AuthContextProvider>
     </>
   );
 }
